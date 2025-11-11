@@ -30,6 +30,7 @@ public class ProductoController {
     public Producto addProducto(@RequestBody Producto producto) {
         return productoApplication.save(producto);
     }
+
     @PutMapping("/update/{id}")
     public Producto updateProducto(@PathVariable Long id, @RequestBody Producto producto) {
         Producto productoDb = productoApplication.findById(id).orElse(null);
@@ -41,6 +42,14 @@ public class ProductoController {
     public void deleteProducto(@PathVariable Long id) {
         Producto productoDb = productoApplication.findById(id).orElse(null);
         productoApplication.delete(productoDb);
+    }
+
+    @DeleteMapping("/update")
+    public void updateProducto(@RequestBody Producto producto) {
+        Producto productoDb = productoApplication.findById(producto.getId()).orElse(null);
+        productoDb.setNombre(producto.getNombre());
+        productoDb.setPrecio(producto.getPrecio());
+        productoApplication.save(productoDb);
     }
 
     @GetMapping("")
