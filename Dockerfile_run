@@ -1,14 +1,16 @@
 FROM openjdk:26-ea-21-jdk-oraclelinux8
 
 RUN mkdir /app
-RUN adduser --disabled-password --gecos '' test
+RUN adduser test
+
+COPY target/*.jar /app.jar
+COPY run.sh run.sh
+
+RUN chmod +x run.sh
 RUN chown -R test:test /app
 
 USER test
 WORKDIR /app
-COPY target/*.jar /app.jar
-COPY run.sh run.sh
-RUN chmod +x run sh
 
 # Ejecuta cuando se inicia el contenedor
 ENTRYPOINT ["./run.sh"]
