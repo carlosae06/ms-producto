@@ -4,9 +4,12 @@
     <springProperty name="appname" source="spring.application.name"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
-            <includeCallerData>true</includeCallerData>
-            <customFields>{"appname":"${appname}"}</customFields>
+<!--        <encoder class="net.logstash.logback.encoder.LogstashEncoder">-->
+<!--            <includeCallerData>true</includeCallerData>-->
+<!--            <customFields>{"appname":"${appname}"}</customFields>-->
+<!--        </encoder>-->
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
         </encoder>
     </appender>
 
