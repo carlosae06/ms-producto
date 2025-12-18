@@ -44,3 +44,19 @@ docker run -d --name ms-producto-02 -p 8083:8082 \
 ## Comandos de Git Bash
 
 **Por favor, añade aquí los comandos que tienes preparados en tu Git Bash.**
+
+## Comandos para instalar Portainer
+```bash
+docker volume create portainer_data
+```
+
+```bash
+docker run -d \
+  -p 9443:9443 \
+  -p 9000:9000 \
+  --name portainer \
+  --restart=always \
+  -v portainer_data:/data \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  portainer/portainer-ce:latest
+```
