@@ -1,7 +1,5 @@
 package bo.com.lite.curso.msproducto.domain;
 
-
-import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
 

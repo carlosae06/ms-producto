@@ -6,7 +6,9 @@ RUN adduser test
 COPY target/*.jar /app/app.jar
 COPY run.sh app/run.sh
 
-RUN chmod +x app/run.sh
+# Corregir finales de línea y dar permisos de ejecución
+RUN sed -i 's/\r$//' app/run.sh && chmod +x app/run.sh
+
 RUN chown -R test:test /app
 
 USER test
