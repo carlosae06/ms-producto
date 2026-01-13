@@ -67,7 +67,7 @@ docker run -d \
 ## Ejecutar docker compose
 
 ```bash
-docker compose up -d
+docker compose -f nombre_archivo up -d
 ```
 ## Devops
 - git clone repo

@@ -1,45 +1,18 @@
 services:
-  postgres12:
-    image: postgres:12.20-alpine3.20
-    container_name: postgres12
+  ms-producto-04:
+    image: ms-producto:04
+    container_name: ms-producto-04
     ports:
-      - "5434:5432"
-    environment:
-      - POSTGRES_PASSWORD=123456
-      - POSTGRES_USER=postgres
-    networks:
-      - curso
-    restart: always
-  ms-producto-02:
-    image: ms-producto:02-run
-    container_name: ms-producto-02
-    ports:
-      - "8083:8082"
+      - "8087:8086"
     environment:
       - URL=jdbc:postgresql://postgres12:5432/curso
       - USER_DB=postgres
       - PASS_DB=123456
       - PORT=8082
+      - JAVA_OPTS=-Xms256 -Xmx900m
     networks:
       - curso
-    restart: always
-    depends_on:
-      - postgres12
-  ms-producto-03:
-    image: ms-producto:02-run
-    container_name: ms-producto-03
-    ports:
-      - "8085:8084"
-    environment:
-      - URL=jdbc:postgresql://postgres12:5432/curso
-      - USER_DB=postgres
-      - PASS_DB=123456
-      - PORT=8082
-    networks:
-      - curso
-    restart: always
-    depends_on:
-      - postgres12
+    restart: unless-stopped
 networks:
   curso:
     external: true
