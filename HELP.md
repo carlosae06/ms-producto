@@ -25,7 +25,7 @@ Esta imagen se crea utilizando el archivo `Dockerfile_run` y el script `run.sh`.
 **Construir la imagen:**
 
 ```bash
-docker build . -f Dockerfile_run -t ms-producto-run .
+docker build . -f Dockerfile_run -t ms-producto-run
 ```
 **Ejecutar el contenedor para crear el contenedor de Postgres:**
 

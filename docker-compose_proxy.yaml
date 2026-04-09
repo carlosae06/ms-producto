@@ -23,14 +23,16 @@ services:
     depends_on:
       - postgres12
   nginx:
-    container_name: nginx
+    container_name: proxy
     image: nginx:lates
     ports:
       - "8443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - /etc/letsencryp/ssl/fullchain.pem:/etc/nginx/ssl/fullchain.pem
-      - /etc/letsencryp/ssl/privkey.pem:/etc/nginx/ssl/privkey.pem
+      - ./fullchain.pem:/etc/nginx/ssl/fullchain.pem
+      - ./privkey.pem:/etc/nginx/ssl/privkey.pem
+    depends_on:
+      - ms-producto-03
 networks:
   curso:
     external: true
