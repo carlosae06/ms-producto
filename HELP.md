@@ -9,7 +9,11 @@ Esta imagen se crea utilizando el archivo `Dockerfile`.
 **Construir la imagen:**
 
 ```bash
-docker build -t ms-producto .
+docker build -t ms-producto
+```
+**Como saber las imagenes que tenemos**
+```bash
+docker images
 ```
 
 **Ejecutar el contenedor:**

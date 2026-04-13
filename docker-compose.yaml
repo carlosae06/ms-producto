@@ -1,9 +1,9 @@
 services:
   ms-producto-03:
-    image: ms-producto:03
+    image: ms-producto-run
     container_name: ms-producto-03
     ports:
-      - "8087:8086"
+      - "8084:8083"
     environment:
       - URL=jdbc:postgresql://postgres12:5432/curso
       - USER_DB=postgres
