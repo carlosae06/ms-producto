@@ -8,9 +8,9 @@ services:
       - POSTGRES_DB=curso
     networks:
       - curso
-    restart: always
+    restart: unless-stopped
   ms-producto-03:
-    image: ms-producto:02-run
+    image: ms-producto-run
     container_name: ms-producto-03
     environment:
       - URL=jdbc:postgresql://postgres12:5432/curso
@@ -24,15 +24,13 @@ services:
       - postgres12
   nginx:
     container_name: proxy
-    image: nginx:lates
+    image: nginx:latest
     ports:
       - "8443:443"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./fullchain.pem:/etc/nginx/ssl/fullchain.pem
-      - ./privkey.pem:/etc/nginx/ssl/privkey.pem
+      - ./nginx/tls:/etc/nginx/certs/
     depends_on:
       - ms-producto-03
 networks:
   curso:
-    external: true
+    driver: bridge
